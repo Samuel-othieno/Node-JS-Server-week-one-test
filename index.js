@@ -1,8 +1,12 @@
 import express from 'express';
+import morgan from 'morgan';
+
+//middleware
+server.use(morgan('dev'))
+
+
 
 const server= express();
-
-
 
 server.get('/', (req, res)=> {
     res.send('Welcome to my sever.');
