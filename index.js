@@ -1,29 +1,19 @@
 import express from 'express';
 import morgan from 'morgan';
 
-//middleware
-server.use(morgan('dev'))
+// express server instance
+const app= express();
 
+// middleware
+app.use(morgan('dev'));
+app.use(express.static('public'));
 
-
-const server= express();
-
-server.get('/', (req, res)=> {
-    res.send('Welcome to my sever.');
+// Route handlers
+app.get('/', (req, res) => {
+    res.send('Welcome to the backend server!');
 })
 
-server.get('/home', (req, res)=> {
-    res.send('Welcome to the home page.');
-})
-
-server.get('/about', (req, res)=> {
-    res.send('This is the About page');
-})
-
-server.get('/Contact', (req, res)=> {
-    res.send('This is the Contact page');
-})
-
-server.listen(4000, ()=>{
+// server listening
+app.listen(4000, ()=>{
     console.log('Server listening on port 4000');
 })
